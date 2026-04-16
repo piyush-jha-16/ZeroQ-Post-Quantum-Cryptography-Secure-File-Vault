@@ -1,0 +1,185 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-0: #000000;
+  --bg-1: #050505;
+  --bg-2: #0b0b0b;
+  --line: #1c1c1c;
+  --text-0: #f5f5f5;
+  --text-1: #a3a3a3;
+  --text-2: #737373;
+  --accent: #1f6feb;
+  --accent-strong: #1158c7;
+  --danger: #dc4545;
+  --warning: #b98535;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Manrope', sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  letter-spacing: 0.005em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background:
+    radial-gradient(1200px 700px at 10% -20%, #121212 0%, transparent 60%),
+    radial-gradient(1000px 600px at 100% 0%, #0a0a0a 0%, transparent 60%),
+    linear-gradient(160deg, var(--bg-0), var(--bg-1));
+  color: var(--text-0);
+}
+
+* {
+  @apply box-border;
+}
+
+@layer components {
+  .app-shell {
+    @apply min-h-screen;
+  }
+
+  .shell-container {
+    @apply mx-auto w-full max-w-6xl px-4;
+  }
+
+  .card-panel {
+    @apply rounded-2xl border p-6 shadow-2xl backdrop-blur;
+    border-color: var(--line);
+    background: rgba(10, 10, 10, 0.9);
+  }
+
+  .topbar {
+    @apply border-b backdrop-blur;
+    border-color: var(--line);
+    background: rgba(7, 7, 7, 0.88);
+  }
+
+  .title-main {
+    @apply text-3xl font-extrabold tracking-tight;
+    color: var(--text-0);
+  }
+
+  .title-section {
+    @apply text-xl font-bold tracking-tight;
+    color: var(--text-0);
+  }
+
+  .text-muted {
+    color: var(--text-1);
+  }
+
+  .label-text {
+    @apply mb-2 block text-xs font-semibold uppercase tracking-wide;
+    color: var(--text-1);
+  }
+
+  .input-field {
+    @apply w-full rounded-xl border px-4 py-3 text-sm outline-none transition-all;
+    border-color: var(--line);
+    background: rgba(12, 12, 12, 0.95);
+    color: var(--text-0);
+  }
+
+  .input-field::placeholder {
+    color: var(--text-2);
+  }
+
+  .input-field:focus {
+    border-color: #2e2e2e;
+    box-shadow: 0 0 0 3px rgba(58, 58, 58, 0.25);
+  }
+
+  .input-field:disabled {
+    @apply cursor-not-allowed opacity-60;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl border px-4 py-3 text-sm font-semibold transition-all;
+    border-color: #3559b9;
+    background: linear-gradient(180deg, var(--accent), var(--accent-strong));
+    color: #eef4ff;
+  }
+
+  .btn-primary:hover {
+    filter: brightness(1.05);
+  }
+
+  .btn-primary:disabled {
+    @apply cursor-not-allowed opacity-55;
+  }
+
+  .btn-neutral {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl border px-4 py-3 text-sm font-semibold transition-all;
+    border-color: var(--line);
+    background: rgba(16, 16, 16, 0.92);
+    color: var(--text-0);
+  }
+
+  .btn-neutral:hover {
+    background: rgba(24, 24, 24, 0.96);
+  }
+
+  .btn-danger {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl border px-4 py-3 text-sm font-semibold transition-all;
+    border-color: #8d3a3a;
+    background: linear-gradient(180deg, #a14646, #8f3d3d);
+    color: #fff2f2;
+  }
+
+  .status-box {
+    @apply mb-5 flex items-start gap-3 rounded-xl border px-4 py-3 text-sm;
+  }
+
+  .status-error {
+    border-color: #8b4545;
+    background: rgba(125, 48, 48, 0.2);
+    color: #ffdede;
+  }
+
+  .status-warning {
+    border-color: #8d6a32;
+    background: rgba(138, 98, 36, 0.18);
+    color: #ffeecf;
+  }
+
+  .status-success {
+    border-color: #2f7658;
+    background: rgba(39, 110, 77, 0.18);
+    color: #d6f5e7;
+  }
+
+  .status-info {
+    border-color: #3b3b3b;
+    background: rgba(40, 40, 40, 0.24);
+    color: #dfdfdf;
+  }
+
+  .step-row {
+    @apply flex items-center gap-3 rounded-lg px-3 py-2 text-sm;
+  }
+
+  .step-active {
+    background: rgba(34, 34, 34, 0.72);
+    color: var(--text-0);
+  }
+
+  .step-done {
+    color: #d4d4d4;
+  }
+
+  .step-idle {
+    color: var(--text-2);
+  }
+
+  .link-accent {
+    @apply font-medium underline-offset-4 hover:underline;
+    color: #d1d5db;
+  }
+}
