@@ -118,3 +118,30 @@ export function ClockIcon({ className = 'h-4 w-4' }) {
     </svg>
   )
 }
+
+export function DocumentationIcon({ className = 'h-5 w-5' }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M6.8 4.2h7.6a3 3 0 0 1 3 3V18a1.8 1.8 0 0 0-1.8-1.8H8.2A1.8 1.8 0 0 0 6.4 18V5.4a1.2 1.2 0 0 1 1.2-1.2Z" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
+      <path d="M9 8h6M9 11h6M9 14h4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+      <path d="M6.4 18.1v.3a1.4 1.4 0 0 0 1.4 1.4h8.8a1.4 1.4 0 0 0 1.4-1.4V8" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+    </svg>
+  )
+}
+
+export function SunIcon({ className = 'h-5 w-5' }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <circle cx="12" cy="12" r="4" stroke="currentColor" strokeWidth="1.8" />
+      <path d="M12 2.8v2.3M12 18.9v2.3M5.6 5.6l1.6 1.6M16.8 16.8l1.6 1.6M2.8 12h2.3M18.9 12h2.3M5.6 18.4l1.6-1.6M16.8 7.2l1.6-1.6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+    </svg>
+  )
+}
+
+export function MoonIcon({ className = 'h-5 w-5' }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M14.8 3.2a8.8 8.8 0 1 0 6 14.8A9.2 9.2 0 0 1 14.8 3.2Z" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  )
+}
