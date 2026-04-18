@@ -5,6 +5,7 @@ import Dashboard from './pages/Dashboard'
 import Upload from './pages/Upload'
 import Inbox from './pages/Inbox'
 import RecoverKeys from './pages/RecoverKeys'
+import Documentation from './pages/Documentation'
 
 /**
  * Protected Route Component
@@ -59,6 +60,14 @@ function App() {
           element={
             <ProtectedRoute>
               <RecoverKeys />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/documentation"
+          element={
+            <ProtectedRoute>
+              <Documentation />
             </ProtectedRoute>
           }
         />
