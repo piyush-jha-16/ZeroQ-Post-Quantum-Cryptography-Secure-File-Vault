@@ -83,6 +83,11 @@ export const downloadFile = async (fileId) => {
   return response.data
 }
 
+export const getVaultStats = async () => {
+  const response = await api.get('/vault/stats')
+  return response.data
+}
+
 export const getKeyBackup = async () => {
   const response = await api.get('/auth/key-backup')
   return response.data
