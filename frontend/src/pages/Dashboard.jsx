@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
+import * as api from '../api'
 import { InboxIcon, UploadIcon } from '../icons'
 import VaultLayout from '../components/VaultLayout'
 
@@ -10,6 +11,9 @@ export default function Dashboard() {
   const [searchParams] = useSearchParams()
   const tab = searchParams.get('tab')
   const activeNav = tab === 'history' || tab === 'settings' ? tab : 'dashboard'
+  const [stats, setStats] = useState({ total_files_shared: 0, files_received: 0 })
+  const [loadingStats, setLoadingStats] = useState(true)
+  const [statsError, setStatsError] = useState('')
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -17,6 +21,41 @@ export default function Dashboard() {
     }, 1000)
 
     return () => clearInterval(timer)
+  }, [])
+
+  useEffect(() => {
+    let isMounted = true
+
+    async function loadStats() {
+      try {
+        const vaultStats = await api.getVaultStats()
+        if (isMounted) {
+          setStats(vaultStats)
+          setStatsError('')
+        }
+      } catch (err) {
+        if (err?.response?.status === 401) {
+          api.logout()
+          navigate('/login', { replace: true })
+          return
+        }
+
+        if (isMounted) {
+          setStats({ total_files_shared: 0, files_received: 0 })
+          setStatsError('Unable to load live stats right now.')
+        }
+      } finally {
+        if (isMounted) {
+          setLoadingStats(false)
+        }
+      }
+    }
+
+    loadStats()
+
+    return () => {
+      isMounted = false
+    }
   }, [])
 
   const dateLabel = now.toLocaleDateString(undefined, {
@@ -47,23 +86,31 @@ export default function Dashboard() {
           <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
             <div className="card-panel p-6">
               <p className="text-sm text-muted mb-2">Total Files Shared</p>
-              <p className="text-3xl font-bold text-white">0</p>
+              <p className="text-3xl font-bold text-main">
+                {loadingStats ? '-' : stats.total_files_shared}
+              </p>
             </div>
             <div className="card-panel p-6">
               <p className="text-sm text-muted mb-2">Files Received</p>
-              <p className="text-3xl font-bold text-white">0</p>
+              <p className="text-3xl font-bold text-main">
+                {loadingStats ? '-' : stats.files_received}
+              </p>
             </div>
             <div className="card-panel p-6">
               <p className="text-sm text-muted mb-2">Date & Time</p>
-              <p className="mt-4 text-sm font-medium uppercase tracking-wide text-[#d4d4d4]">{dateLabel}</p>
+              <p className="mt-4 text-sm font-medium uppercase tracking-wide text-main">{dateLabel}</p>
               <div className="mt-1 flex items-end gap-2">
-                <p className="text-[2rem] leading-none font-semibold tracking-tight text-white [font-variant-numeric:tabular-nums]">
+                <p className="text-[2rem] leading-none font-semibold tracking-tight text-main [font-variant-numeric:tabular-nums]">
                   {timeLabel}
                 </p>
                 <p className="pb-1 text-xs text-muted">{timeZoneLabel}</p>
               </div>
             </div>
           </div>
+
+          {statsError ? (
+            <p className="text-sm text-muted">{statsError}</p>
+          ) : null}
 
           <div className="card-panel p-6">
             <h3 className="text-lg font-semibold mb-4">Zero-Knowledge Protection Model</h3>
@@ -74,7 +121,7 @@ export default function Dashboard() {
 
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
             <div className="card-panel p-8 transition-all hover:-translate-y-0.5">
-              <div className="mb-4 inline-flex rounded-xl border border-[#2a2a2a] bg-[#111111] p-3 text-[#cfcfcf]">
+              <div className="icon-chip mb-4">
                 <UploadIcon className="h-6 w-6" />
               </div>
               <h4 className="mb-2 text-lg font-bold">Send File</h4>
@@ -87,7 +134,7 @@ export default function Dashboard() {
             </div>
 
             <div className="card-panel p-8 transition-all hover:-translate-y-0.5">
-              <div className="mb-4 inline-flex rounded-xl border border-[#2a2a2a] bg-[#111111] p-3 text-[#cfcfcf]">
+              <div className="icon-chip mb-4">
                 <InboxIcon className="h-6 w-6" />
               </div>
               <h4 className="mb-2 text-lg font-bold">Inbox</h4>
@@ -113,8 +160,8 @@ export default function Dashboard() {
         <div className="card-panel p-6">
           <h3 className="text-lg font-semibold mb-4">Settings</h3>
           <div className="space-y-4">
-            <div className="pb-4 border-b border-[#1c1c1c]">
-              <p className="font-semibold text-white">Username</p>
+            <div className="pb-4 border-b" style={{ borderColor: 'var(--line)' }}>
+              <p className="font-semibold text-main">Username</p>
               <p className="text-sm text-muted mt-1">{username}</p>
             </div>
             <button onClick={() => navigate('/recover-keys')} className="btn-primary">
