@@ -1,6 +1,6 @@
-# PQC Vault
+# ZeroQ: Post Quantum Cryptography Secured File Vault
 
-PQC Vault is a post-quantum secure file sharing application built around browser-side encryption, sender authentication, and encrypted private-key recovery. The server stores only encrypted payloads, public keys, and metadata needed to deliver files between authenticated users.
+ZeroQ Vault is a post-quantum secure file sharing application built around browser-side encryption, sender authentication, and encrypted private-key recovery. The server stores only encrypted payloads, public keys, and metadata needed to deliver files between authenticated users.
 
 ## Overview
 
