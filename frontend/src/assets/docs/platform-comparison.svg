@@ -1,0 +1,46 @@
+<svg width="1200" height="680" viewBox="0 0 1200 680" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Platform comparison snapshot">
+  <defs>
+    <linearGradient id="compbg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="680" rx="28" fill="url(#compbg)"/>
+  <text x="54" y="74" fill="#f8fafc" font-family="Manrope, Arial, sans-serif" font-size="34" font-weight="700">Security Posture Snapshot</text>
+
+  <rect x="54" y="130" width="1092" height="500" rx="18" fill="#0b1220" stroke="#334155" stroke-width="1.2"/>
+
+  <text x="88" y="188" fill="#93c5fd" font-family="Manrope, Arial, sans-serif" font-size="18" font-weight="700">Capability</text>
+  <text x="430" y="188" fill="#f8fafc" font-family="Manrope, Arial, sans-serif" font-size="18" font-weight="700">Traditional Cloud Share</text>
+  <text x="730" y="188" fill="#f8fafc" font-family="Manrope, Arial, sans-serif" font-size="18" font-weight="700">Email Attachment</text>
+  <text x="960" y="188" fill="#86efac" font-family="Manrope, Arial, sans-serif" font-size="18" font-weight="700">ZeroQ</text>
+
+  <line x1="78" y1="208" x2="1122" y2="208" stroke="#334155"/>
+
+  <text x="88" y="252" fill="#cbd5e1" font-family="Manrope, Arial, sans-serif" font-size="16">Client-side encryption before upload</text>
+  <text x="500" y="252" fill="#fca5a5" font-family="Manrope, Arial, sans-serif" font-size="16">Partial</text>
+  <text x="780" y="252" fill="#fca5a5" font-family="Manrope, Arial, sans-serif" font-size="16">No</text>
+  <text x="980" y="252" fill="#86efac" font-family="Manrope, Arial, sans-serif" font-size="16">Yes</text>
+
+  <text x="88" y="300" fill="#cbd5e1" font-family="Manrope, Arial, sans-serif" font-size="16">Server can decrypt stored file</text>
+  <text x="500" y="300" fill="#fde68a" font-family="Manrope, Arial, sans-serif" font-size="16">Often Yes</text>
+  <text x="780" y="300" fill="#fca5a5" font-family="Manrope, Arial, sans-serif" font-size="16">Yes</text>
+  <text x="980" y="300" fill="#86efac" font-family="Manrope, Arial, sans-serif" font-size="16">No</text>
+
+  <text x="88" y="348" fill="#cbd5e1" font-family="Manrope, Arial, sans-serif" font-size="16">Signature verification before open</text>
+  <text x="500" y="348" fill="#fca5a5" font-family="Manrope, Arial, sans-serif" font-size="16">Rare</text>
+  <text x="780" y="348" fill="#fca5a5" font-family="Manrope, Arial, sans-serif" font-size="16">No</text>
+  <text x="980" y="348" fill="#86efac" font-family="Manrope, Arial, sans-serif" font-size="16">Yes</text>
+
+  <text x="88" y="396" fill="#cbd5e1" font-family="Manrope, Arial, sans-serif" font-size="16">Post-quantum key exchange/signatures</text>
+  <text x="500" y="396" fill="#fca5a5" font-family="Manrope, Arial, sans-serif" font-size="16">No</text>
+  <text x="780" y="396" fill="#fca5a5" font-family="Manrope, Arial, sans-serif" font-size="16">No</text>
+  <text x="980" y="396" fill="#86efac" font-family="Manrope, Arial, sans-serif" font-size="16">Yes</text>
+
+  <text x="88" y="444" fill="#cbd5e1" font-family="Manrope, Arial, sans-serif" font-size="16">Recovery from cleared browser storage</text>
+  <text x="500" y="444" fill="#86efac" font-family="Manrope, Arial, sans-serif" font-size="16">Usually Yes</text>
+  <text x="780" y="444" fill="#fca5a5" font-family="Manrope, Arial, sans-serif" font-size="16">No</text>
+  <text x="980" y="444" fill="#86efac" font-family="Manrope, Arial, sans-serif" font-size="16">Yes*</text>
+
+  <text x="88" y="516" fill="#94a3b8" font-family="Manrope, Arial, sans-serif" font-size="14">* Requires correct recovery secret. Comparison is generalized and varies by vendor configuration.</text>
+</svg>

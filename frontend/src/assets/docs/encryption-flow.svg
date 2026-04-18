@@ -1,0 +1,51 @@
+<svg width="1200" height="680" viewBox="0 0 1200 680" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="End-to-end encryption flow">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0b1224"/>
+      <stop offset="100%" stop-color="#1e3a8a"/>
+    </linearGradient>
+    <linearGradient id="chip" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#102245"/>
+      <stop offset="100%" stop-color="#1e40af"/>
+    </linearGradient>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#bfdbfe"/>
+    </marker>
+  </defs>
+
+  <rect width="1200" height="680" rx="28" fill="url(#bg)"/>
+  <text x="56" y="70" fill="#eff6ff" font-family="Manrope, Arial, sans-serif" font-size="34" font-weight="700">ZeroQ End-to-End Encryption Journey</text>
+  <text x="56" y="110" fill="#bfdbfe" font-family="Manrope, Arial, sans-serif" font-size="18">Plaintext never leaves the sender browser. Only encrypted payload moves across the network.</text>
+
+  <rect x="56" y="170" width="250" height="120" rx="18" fill="url(#chip)" stroke="#93c5fd" stroke-width="1.2"/>
+  <text x="78" y="214" fill="#eff6ff" font-family="Manrope, Arial, sans-serif" font-size="18" font-weight="700">1. Sender Browser</text>
+  <text x="78" y="244" fill="#dbeafe" font-family="Manrope, Arial, sans-serif" font-size="15">Generate shared secret</text>
+  <text x="78" y="266" fill="#dbeafe" font-family="Manrope, Arial, sans-serif" font-size="15">Encrypt file via AES-256-GCM</text>
+
+  <rect x="355" y="170" width="250" height="120" rx="18" fill="url(#chip)" stroke="#93c5fd" stroke-width="1.2"/>
+  <text x="377" y="214" fill="#eff6ff" font-family="Manrope, Arial, sans-serif" font-size="18" font-weight="700">2. Signature Layer</text>
+  <text x="377" y="244" fill="#dbeafe" font-family="Manrope, Arial, sans-serif" font-size="15">Sign ciphertext using</text>
+  <text x="377" y="266" fill="#dbeafe" font-family="Manrope, Arial, sans-serif" font-size="15">ML-DSA private key</text>
+
+  <rect x="654" y="170" width="250" height="120" rx="18" fill="url(#chip)" stroke="#93c5fd" stroke-width="1.2"/>
+  <text x="676" y="214" fill="#eff6ff" font-family="Manrope, Arial, sans-serif" font-size="18" font-weight="700">3. ZeroQ Backend</text>
+  <text x="676" y="244" fill="#dbeafe" font-family="Manrope, Arial, sans-serif" font-size="15">Stores encrypted blob +</text>
+  <text x="676" y="266" fill="#dbeafe" font-family="Manrope, Arial, sans-serif" font-size="15">ciphertext + signature only</text>
+
+  <rect x="953" y="170" width="190" height="120" rx="18" fill="url(#chip)" stroke="#93c5fd" stroke-width="1.2"/>
+  <text x="975" y="214" fill="#eff6ff" font-family="Manrope, Arial, sans-serif" font-size="18" font-weight="700">4. Receiver</text>
+  <text x="975" y="244" fill="#dbeafe" font-family="Manrope, Arial, sans-serif" font-size="15">Verify signature</text>
+  <text x="975" y="266" fill="#dbeafe" font-family="Manrope, Arial, sans-serif" font-size="15">Decrypt locally</text>
+
+  <line x1="306" y1="230" x2="355" y2="230" stroke="#bfdbfe" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="605" y1="230" x2="654" y2="230" stroke="#bfdbfe" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="904" y1="230" x2="953" y2="230" stroke="#bfdbfe" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <rect x="56" y="350" width="1087" height="260" rx="20" fill="#081020" stroke="#1e3a8a" stroke-width="1.2"/>
+  <text x="88" y="395" fill="#e2e8f0" font-family="Manrope, Arial, sans-serif" font-size="24" font-weight="700">Why interception fails</text>
+  <text x="88" y="432" fill="#cbd5e1" font-family="Manrope, Arial, sans-serif" font-size="17">• In transit attacker sees encrypted bytes only, not plaintext.</text>
+  <text x="88" y="464" fill="#cbd5e1" font-family="Manrope, Arial, sans-serif" font-size="17">• ML-DSA signature verification detects tampering before decryption.</text>
+  <text x="88" y="496" fill="#cbd5e1" font-family="Manrope, Arial, sans-serif" font-size="17">• ML-KEM encapsulation prevents key exposure to the server.</text>
+  <text x="88" y="528" fill="#cbd5e1" font-family="Manrope, Arial, sans-serif" font-size="17">• Decryption key material remains in recipient browser storage.</text>
+  <text x="88" y="560" fill="#93c5fd" font-family="Manrope, Arial, sans-serif" font-size="15">Note: account compromise can still expose data. Strong passwords and device security remain critical.</text>
+</svg>

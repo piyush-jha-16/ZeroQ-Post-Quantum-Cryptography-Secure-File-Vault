@@ -1,0 +1,42 @@
+<svg width="1200" height="680" viewBox="0 0 1200 680" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Threat model diagram">
+  <defs>
+    <linearGradient id="base" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#111827"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <linearGradient id="safe" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#14532d"/>
+      <stop offset="100%" stop-color="#166534"/>
+    </linearGradient>
+    <linearGradient id="risk" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#7f1d1d"/>
+      <stop offset="100%" stop-color="#991b1b"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="680" rx="28" fill="url(#base)"/>
+  <text x="52" y="70" fill="#f8fafc" font-family="Manrope, Arial, sans-serif" font-size="34" font-weight="700">Threat Boundaries In ZeroQ</text>
+  <text x="52" y="108" fill="#cbd5e1" font-family="Manrope, Arial, sans-serif" font-size="18">What attackers can see vs what they cannot read</text>
+
+  <rect x="52" y="150" width="530" height="490" rx="22" fill="url(#safe)" opacity="0.9"/>
+  <text x="84" y="200" fill="#dcfce7" font-family="Manrope, Arial, sans-serif" font-size="26" font-weight="700">Protected Zone</text>
+  <text x="84" y="244" fill="#ecfdf5" font-family="Manrope, Arial, sans-serif" font-size="18">• File plaintext before upload</text>
+  <text x="84" y="278" fill="#ecfdf5" font-family="Manrope, Arial, sans-serif" font-size="18">• ML-KEM private key</text>
+  <text x="84" y="312" fill="#ecfdf5" font-family="Manrope, Arial, sans-serif" font-size="18">• ML-DSA private signing key</text>
+  <text x="84" y="346" fill="#ecfdf5" font-family="Manrope, Arial, sans-serif" font-size="18">• Decryption operation in browser</text>
+  <text x="84" y="380" fill="#ecfdf5" font-family="Manrope, Arial, sans-serif" font-size="18">• Recovery secret entered by user</text>
+
+  <rect x="620" y="150" width="528" height="490" rx="22" fill="url(#risk)" opacity="0.9"/>
+  <text x="652" y="200" fill="#fee2e2" font-family="Manrope, Arial, sans-serif" font-size="26" font-weight="700">Exposed Surface</text>
+  <text x="652" y="244" fill="#fef2f2" font-family="Manrope, Arial, sans-serif" font-size="18">• Encrypted payload bytes</text>
+  <text x="652" y="278" fill="#fef2f2" font-family="Manrope, Arial, sans-serif" font-size="18">• Sender and recipient usernames</text>
+  <text x="652" y="312" fill="#fef2f2" font-family="Manrope, Arial, sans-serif" font-size="18">• Upload/download timing metadata</text>
+  <text x="652" y="346" fill="#fef2f2" font-family="Manrope, Arial, sans-serif" font-size="18">• JWT session token if browser is compromised</text>
+  <text x="652" y="380" fill="#fef2f2" font-family="Manrope, Arial, sans-serif" font-size="18">• User account if password is weak</text>
+
+  <text x="84" y="462" fill="#86efac" font-family="Manrope, Arial, sans-serif" font-size="16" font-weight="700">Main Security Claim</text>
+  <text x="84" y="494" fill="#dcfce7" font-family="Manrope, Arial, sans-serif" font-size="16">Backend compromise should not reveal plaintext files without endpoint compromise.</text>
+
+  <text x="652" y="462" fill="#fca5a5" font-family="Manrope, Arial, sans-serif" font-size="16" font-weight="700">Residual Risks</text>
+  <text x="652" y="494" fill="#fee2e2" font-family="Manrope, Arial, sans-serif" font-size="16">Malware on user device, stolen passwords, and social engineering remain out of cryptographic scope.</text>
+</svg>
