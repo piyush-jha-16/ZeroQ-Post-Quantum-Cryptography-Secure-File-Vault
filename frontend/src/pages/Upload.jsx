@@ -129,12 +129,12 @@ export default function Upload() {
       <VaultLayout activeNav="send-file" title="Send Secure File" subtitle="Encryption completed and file stored safely in the vault.">
         <div className="w-full max-w-md mx-auto">
           <div className="card-panel p-8 text-center">
-            <div className="mx-auto mb-4 inline-flex rounded-xl border border-[#2a2a2a] bg-[#111111] p-3 text-[#e5e5e5]">
+            <div className="icon-chip mx-auto mb-4">
               <CheckCircleIcon className="h-8 w-8" />
             </div>
             <h2 className="title-section mb-4">File Uploaded Successfully</h2>
             <p className="mb-2 text-sm text-muted">File ID</p>
-            <p className="mb-6 break-all rounded-xl border border-[#2a2a2a] bg-[#111111] p-3 font-mono text-xs text-[#d7d7d7]">
+            <p className="surface-soft mb-6 break-all p-3 font-mono text-xs">
               {fileId}
             </p>
             <button onClick={() => navigate('/dashboard')} className="btn-primary w-full">
@@ -155,7 +155,7 @@ export default function Upload() {
       <div className="w-full">
         <div className="card-panel p-8 md:p-10">
           <div className="mb-6 flex items-center gap-3">
-            <div className="rounded-xl border border-[#2a2a2a] bg-[#111111] p-2 text-[#cfcfcf]">
+            <div className="icon-chip p-2">
               <UploadIcon className="h-5 w-5" />
             </div>
             <h2 className="title-section">Encryption & Upload</h2>
@@ -192,10 +192,10 @@ export default function Upload() {
                 className="hidden"
               />
 
-              <div className="rounded-xl border border-[#2a2a2a] bg-[#0f0f0f] p-4">
+              <div className="surface-soft p-4">
                 <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
                   <div className="min-w-0">
-                    <p className="text-sm font-medium text-[#f5f5f5]">
+                    <p className="text-sm font-medium text-main">
                       {selectedFile ? selectedFile.name : 'No file selected'}
                     </p>
                     <p className="mt-1 text-xs text-muted">
@@ -232,9 +232,9 @@ export default function Upload() {
           </form>
 
           {uploading && (
-            <div className="mt-8 space-y-2 rounded-xl border border-[#2a2a2a] bg-[#111111] p-4">
+            <div className="surface-soft mt-8 space-y-2 p-4">
               <div className="mb-3 flex items-center gap-2">
-                <DocumentLockIcon className="h-4 w-4 text-[#cfcfcf]" />
+                <DocumentLockIcon className="h-4 w-4 text-muted" />
                 <h3 className="text-sm font-semibold">Encryption Process</h3>
               </div>
               {steps.map((step, index) => (
@@ -250,7 +250,7 @@ export default function Upload() {
                     ) : index === currentStep ? (
                       <SpinnerIcon className="h-4 w-4 animate-spin" />
                     ) : (
-                      <div className="h-2 w-2 rounded-full bg-[#5e5e5e]" />
+                      <div className="h-2 w-2 rounded-full" style={{ backgroundColor: 'var(--text-2)' }} />
                     )}
                   </div>
                   <span>{step}</span>

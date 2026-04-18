@@ -159,15 +159,15 @@ export default function Inbox() {
 
         {loading ? (
           <div className="card-panel py-14 text-center">
-            <SpinnerIcon className="mx-auto h-7 w-7 animate-spin text-[#c6c6c6]" />
+            <SpinnerIcon className="mx-auto h-7 w-7 animate-spin text-muted" />
             <p className="mt-3 text-sm text-muted">Loading inbox...</p>
           </div>
         ) : files.length === 0 ? (
           <div className="card-panel py-14 text-center">
-            <div className="mx-auto mb-5 inline-flex rounded-xl border border-[#2a2a2a] bg-[#111111] p-4 text-[#cfcfcf]">
+            <div className="icon-chip mx-auto mb-5 p-4">
               <InboxIcon className="h-6 w-6" />
             </div>
-            <h3 className="text-base font-semibold text-[#f5f5f5]">No files in your inbox yet</h3>
+            <h3 className="text-base font-semibold text-main">No files in your inbox yet</h3>
             <p className="mt-2 text-sm text-muted">Incoming encrypted files will appear here once someone sends you a file.</p>
           </div>
         ) : (
@@ -177,8 +177,8 @@ export default function Inbox() {
                 <div className="flex flex-col md:flex-row md:items-center md:justify-between">
                   <div className="flex-1 mb-4 md:mb-0">
                     <div className="mb-1 flex items-center gap-2">
-                      <DocumentLockIcon className="h-4 w-4 text-[#cfcfcf]" />
-                      <h3 className="text-base font-semibold text-[#f5f5f5]">{file.original_filename}</h3>
+                      <DocumentLockIcon className="h-4 w-4 text-muted" />
+                      <h3 className="text-base font-semibold text-main">{file.original_filename}</h3>
                     </div>
                     <div className="flex flex-wrap items-center gap-3 text-xs text-muted">
                       <span className="inline-flex items-center gap-1">
@@ -209,7 +209,7 @@ export default function Inbox() {
                 </div>
 
                 {decrypting === file.id && (
-                  <div className="mt-4 space-y-2 rounded-xl border border-[#2a2a2a] bg-[#111111] p-4">
+                  <div className="surface-soft mt-4 space-y-2 p-4">
                     {decryptSteps.map((step, index) => (
                       <div
                         key={index}
@@ -223,7 +223,7 @@ export default function Inbox() {
                           ) : index === currentStep ? (
                             <SpinnerIcon className="h-4 w-4 animate-spin" />
                           ) : (
-                            <div className="h-2 w-2 rounded-full bg-[#5e5e5e]" />
+                            <div className="h-2 w-2 rounded-full" style={{ backgroundColor: 'var(--text-2)' }} />
                           )}
                         </div>
                         <span>{step}</span>
