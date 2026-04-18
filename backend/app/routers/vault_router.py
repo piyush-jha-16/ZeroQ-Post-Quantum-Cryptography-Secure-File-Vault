@@ -8,7 +8,7 @@ from sqlalchemy.orm import Session
 from auth import get_current_user
 from database import get_db
 from models import FileRecord, User
-from schemas import DownloadResponse, FileMetadata
+from schemas import DownloadResponse, FileMetadata, VaultStatsResponse
 
 router = APIRouter(tags=["vault"])
 
@@ -99,6 +99,26 @@ def get_inbox(
         ))
     
     return result
+
+
+@router.get("/vault/stats", response_model=VaultStatsResponse)
+def get_vault_stats(
+    current_user: User = Depends(get_current_user),
+    db: Session = Depends(get_db),
+):
+    """Return dashboard counters for the current user."""
+    total_files_shared = db.query(FileRecord).filter(
+        FileRecord.sender_id == current_user.id
+    ).count()
+
+    files_received = db.query(FileRecord).filter(
+        FileRecord.receiver_id == current_user.id
+    ).count()
+
+    return {
+        "total_files_shared": total_files_shared,
+        "files_received": files_received,
+    }
 
 
 @router.get("/vault/download/{file_id}", response_model=DownloadResponse)
