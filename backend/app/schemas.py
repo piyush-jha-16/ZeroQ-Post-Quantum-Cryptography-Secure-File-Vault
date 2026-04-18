@@ -58,3 +58,8 @@ class DownloadResponse(BaseModel):
     encrypted_file_blob: str  # Base64-encoded
     sender_username: str
     sender_ml_dsa_pub_key: str
+
+
+class VaultStatsResponse(BaseModel):
+    total_files_shared: int
+    files_received: int
