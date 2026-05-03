@@ -5,66 +5,73 @@ import platformComparison from '../assets/docs/platform-comparison.svg'
 
 const processSteps = [
   {
-    title: 'Key Generation In Browser',
+    title: 'Create keys in your browser',
     detail:
-      'When a user registers, ML-KEM and ML-DSA key pairs are generated locally. Private keys do not need to travel to backend services in plaintext.',
+      'When you register, ZeroQ creates your keys on your device. Your private keys do not need to be sent to the server in plain form.',
   },
   {
-    title: 'Recipient Key Fetch + Encapsulation',
+    title: 'Fetch the recipient’s public key',
     detail:
-      'The sender fetches recipient public keys only. A shared secret is encapsulated with recipient ML-KEM public key for each file transfer.',
+      'When you send a file, the app gets only the recipient’s public key. That key is used to create a shared secret for that transfer.',
   },
   {
-    title: 'Client-Side Encryption + Signature',
+    title: 'Encrypt and sign before upload',
     detail:
-      'File bytes are encrypted in-browser with AES-256-GCM and signed by sender ML-DSA private key. The server receives ciphertext and metadata only.',
+      'Your browser encrypts the file before it leaves the page. The sender also signs the file so the recipient can confirm it was not changed.',
   },
   {
-    title: 'Verification Before Decryption',
+    title: 'Verify first, then decrypt',
     detail:
-      'Recipient first verifies ML-DSA signature, then decapsulates ML-KEM secret and decrypts locally. This blocks tampered payloads from being opened.',
+      'The recipient checks the signature first and decrypts the file locally only after it passes verification.',
   },
 ]
 
 const comparisonRows = [
   {
-    factor: 'Plaintext exposure to platform backend',
-    traditional: 'Common (provider-managed keys or decryptable processing)',
-    email: 'Common (message content often server-accessible)',
-    zeroq: 'Low by design (ciphertext-only storage)',
+    factor: 'Can the server read your file?',
+    traditional: 'Often yes, depending on the service design',
+    email: 'Usually yes inside the mailbox system',
+    zeroq: 'No, it stores ciphertext only',
   },
   {
-    factor: 'Tamper detection before opening file',
-    traditional: 'Limited and vendor-specific',
-    email: 'Typically absent for attachments',
-    zeroq: 'Built-in via ML-DSA signature verification',
+    factor: 'Can someone change the file without being noticed?',
+    traditional: 'Sometimes, depending on the platform',
+    email: 'Attachments usually do not have strong built-in checks',
+    zeroq: 'No, signatures help detect tampering',
   },
   {
-    factor: 'Post-quantum cryptography readiness',
-    traditional: 'Generally not default',
-    email: 'Generally not default',
-    zeroq: 'Core architecture includes ML-KEM and ML-DSA',
+    factor: 'Is it built for newer cryptography standards?',
+    traditional: 'Usually not by default',
+    email: 'Usually not by default',
+    zeroq: 'Yes, it uses ML-KEM and ML-DSA',
   },
   {
-    factor: 'Security model transparency',
-    traditional: 'Depends on provider documentation',
-    email: 'Low user visibility',
-    zeroq: 'Explicit client-side workflow and trust boundaries',
+    factor: 'How easy is the security model to understand?',
+    traditional: 'Often hidden inside provider policies',
+    email: 'Most users never see the full workflow',
+    zeroq: 'The app explains the client-side flow clearly',
   },
 ]
 
 const threatBullets = [
-  'Network interception sees encrypted payload, not plaintext file contents.',
-  'Payload tampering is detected by signature verification before decryption.',
-  'Backend database leak should expose ciphertext, nonces, and metadata instead of clear files.',
-  'Recipient private keys are required for successful decapsulation and final decryption.',
+  'Anyone who intercepts traffic only sees encrypted data.',
+  'If a file is changed in transit, the signature check can fail before the file opens.',
+  'A backend database leak should reveal ciphertext and metadata, not readable file contents.',
+  'Only the recipient’s private key can unlock the final file data.',
 ]
 
 const limitsBullets = [
-  'If attacker controls endpoint device, local keys and session can be stolen.',
-  'Weak credentials still allow account takeover risk.',
-  'Metadata (sender, receiver, timestamps, filename) remains operationally visible.',
-  'Recovery secret must be strong and stored safely by users.',
+  'If an attacker controls your device, they may still access local keys or sessions.',
+  'Weak passwords still create account risk.',
+  'Some metadata, such as sender, receiver, filename, and time, is still visible to the system.',
+  'Your recovery secret must be strong and kept safe by you.',
+]
+
+const plainLanguageNotes = [
+  'Files are encrypted before they leave your browser.',
+  'The server stores only encrypted file data.',
+  'The recipient checks the sender’s signature before opening the file.',
+  'Recovery is possible only with your recovery secret.',
 ]
 
 export default function Documentation() {
