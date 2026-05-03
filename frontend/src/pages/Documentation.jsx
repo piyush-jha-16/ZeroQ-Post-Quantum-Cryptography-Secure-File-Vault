@@ -79,39 +79,50 @@ export default function Documentation() {
     <VaultLayout
       activeNav="documentation"
       title="Documentation"
-      subtitle="Architecture, security model, and why ZeroQ is safer than traditional file sharing workflows."
+      subtitle="A simple explanation of how ZeroQ protects files, what it protects well, and where the limits are."
     >
       <div className="mx-auto w-full max-w-7xl space-y-8">
         <section className="card-panel overflow-hidden p-0">
-          <div className="grid grid-cols-1 lg:grid-cols-5">
-            <div className="p-8 lg:col-span-3">
-              <p className="mb-2 text-xs font-semibold uppercase tracking-[0.16em] text-muted">Security Whitepaper Summary</p>
-              <h3 className="text-main text-2xl font-extrabold tracking-tight">Why ZeroQ Is Safer For Sensitive File Transfer</h3>
+          <div className="flex flex-col gap-6 p-6 lg:flex-row lg:items-stretch lg:p-8">
+            <div className="flex-1">
+              <p className="mb-2 text-xs font-semibold uppercase tracking-[0.16em] text-muted">Overview</p>
+              <h3 className="text-main text-2xl font-extrabold tracking-tight">How ZeroQ keeps file sharing private</h3>
               <p className="mt-4 text-sm text-muted leading-7">
-                ZeroQ is built so file plaintext is encrypted before upload and decrypted only by the recipient browser. Even if transport is intercepted
-                or backend storage is leaked, attackers should not be able to read the file without endpoint compromise and private key access.
+                ZeroQ is designed so your file is locked in your browser before it is uploaded. The server receives only encrypted data, and only the
+                recipient’s browser can open it after verifying the sender.
               </p>
               <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
                 <div className="surface-soft p-4">
-                  <p className="text-xs uppercase tracking-wide text-muted">Cryptography Stack</p>
-                  <p className="mt-1 text-sm font-semibold text-main">ML-KEM-768 + ML-DSA-65 + AES-256-GCM</p>
+                  <p className="text-xs uppercase tracking-wide text-muted">In simple terms</p>
+                  <p className="mt-1 text-sm font-semibold text-main">Upload encrypted. Open only on the recipient’s device.</p>
                 </div>
                 <div className="surface-soft p-4">
-                  <p className="text-xs uppercase tracking-wide text-muted">Trust Model</p>
-                  <p className="mt-1 text-sm font-semibold text-main">Ciphertext-at-rest, client-side decryption</p>
+                  <p className="text-xs uppercase tracking-wide text-muted">What the server sees</p>
+                  <p className="mt-1 text-sm font-semibold text-main">Encrypted files, not readable content</p>
                 </div>
               </div>
+              <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
+                {plainLanguageNotes.map((note) => (
+                  <div key={note} className="surface-soft p-4 text-sm text-muted leading-6">
+                    {note}
+                  </div>
+                ))}
+              </div>
             </div>
-            <div className="lg:col-span-2" style={{ backgroundColor: 'var(--bg-2)' }}>
-              <img src={encryptionFlow} alt="ZeroQ end-to-end encryption flow diagram" className="h-full w-full object-cover" />
+            <div className="flex items-center justify-center rounded-2xl bg-[color:var(--bg-2)] p-4 lg:w-[440px] lg:flex-none">
+              <img
+                src={encryptionFlow}
+                alt="ZeroQ end-to-end encryption flow diagram"
+                className="h-auto w-full rounded-xl object-contain shadow-lg"
+              />
             </div>
           </div>
         </section>
 
         <section className="grid grid-cols-1 gap-6 xl:grid-cols-2">
           <div className="card-panel p-7">
-            <h4 className="text-main text-xl font-bold">How The Process Works</h4>
-            <p className="mt-2 text-sm text-muted">From sender upload to recipient download, security is enforced at each stage.</p>
+            <h4 className="text-main text-xl font-bold">What happens when you send a file</h4>
+            <p className="mt-2 text-sm text-muted">Each step is handled in a way that keeps the file private and easy to verify.</p>
             <div className="mt-6 space-y-4">
               {processSteps.map((step, index) => (
                 <div key={step.title} className="surface-soft p-4">
@@ -124,11 +135,17 @@ export default function Documentation() {
           </div>
 
           <div className="space-y-6">
-            <div className="card-panel p-0 overflow-hidden">
-              <img src={threatModel} alt="Threat model showing protected zone and exposed surface" className="w-full object-cover" />
+            <div className="card-panel overflow-hidden p-0">
+              <div className="bg-[color:var(--bg-2)] p-4">
+                <img
+                  src={threatModel}
+                  alt="Threat model showing protected zone and exposed surface"
+                  className="h-auto w-full rounded-xl object-contain"
+                />
+              </div>
             </div>
             <div className="card-panel p-6">
-              <h4 className="text-main text-xl font-bold">Why Hackers Cannot Simply Read Files In Transit</h4>
+              <h4 className="text-main text-xl font-bold">Why interception does not reveal the file</h4>
               <ul className="mt-4 space-y-2 text-sm text-muted leading-6">
                 {threatBullets.map((item) => (
                   <li key={item}>• {item}</li>
@@ -139,9 +156,9 @@ export default function Documentation() {
         </section>
 
         <section className="card-panel p-7">
-          <h4 className="text-main text-xl font-bold">ZeroQ vs Traditional Sharing Platforms</h4>
+          <h4 className="text-main text-xl font-bold">How ZeroQ compares with common file-sharing options</h4>
           <p className="mt-2 text-sm text-muted">
-            This comparison is generalized for typical default setups. Enterprise-customized systems may vary by vendor and policy.
+            This is a simple comparison for typical default setups. Different providers may offer stronger settings, but those are not always enabled.
           </p>
 
           <div className="mt-6 overflow-x-auto rounded-xl border" style={{ borderColor: 'var(--line)' }}>
@@ -149,7 +166,7 @@ export default function Documentation() {
               <thead style={{ backgroundColor: 'var(--bg-2)' }}>
                 <tr>
                   <th className="px-4 py-3 text-main font-semibold">Security Factor</th>
-                  <th className="px-4 py-3 text-main font-semibold">Traditional Cloud Share</th>
+                  <th className="px-4 py-3 text-main font-semibold">Traditional Cloud Sharing</th>
                   <th className="px-4 py-3 text-main font-semibold">Email Attachments</th>
                   <th className="px-4 py-3 text-main font-semibold">ZeroQ</th>
                 </tr>
@@ -167,24 +184,30 @@ export default function Documentation() {
             </table>
           </div>
 
-          <div className="mt-6 rounded-xl overflow-hidden border" style={{ borderColor: 'var(--line)' }}>
-            <img src={platformComparison} alt="Visual comparison of zeroq and traditional sharing platforms" className="w-full object-cover" />
+          <div className="mt-6 overflow-hidden rounded-xl border" style={{ borderColor: 'var(--line)' }}>
+            <div className="bg-[color:var(--bg-2)] p-4">
+              <img
+                src={platformComparison}
+                alt="Visual comparison of zeroq and traditional sharing platforms"
+                className="h-auto w-full rounded-lg object-contain"
+              />
+            </div>
           </div>
         </section>
 
         <section className="grid grid-cols-1 gap-6 lg:grid-cols-2">
           <div className="card-panel p-6">
-            <h4 className="text-main text-lg font-bold">Security Strengths</h4>
+            <h4 className="text-main text-lg font-bold">What ZeroQ does well</h4>
             <ul className="mt-4 space-y-2 text-sm text-muted leading-6">
-              <li>• Browser-side encryption reduces trust on backend infrastructure.</li>
-              <li>• Signature verification makes tampering harder to hide.</li>
-              <li>• Post-quantum primitives improve future-resilience planning.</li>
-              <li>• Key recovery flow supports operational continuity.</li>
+              <li>• It reduces trust in the backend by encrypting files in the browser.</li>
+              <li>• It checks for tampering before a file is opened.</li>
+              <li>• It uses newer post-quantum cryptography building blocks.</li>
+              <li>• It includes a recovery flow so users can regain access when needed.</li>
             </ul>
           </div>
 
           <div className="card-panel p-6">
-            <h4 className="text-main text-lg font-bold">Operational Limits You Should Know</h4>
+            <h4 className="text-main text-lg font-bold">Important limits to keep in mind</h4>
             <ul className="mt-4 space-y-2 text-sm text-muted leading-6">
               {limitsBullets.map((item) => (
                 <li key={item}>• {item}</li>
