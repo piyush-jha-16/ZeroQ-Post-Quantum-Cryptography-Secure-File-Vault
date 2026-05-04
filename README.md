@@ -178,7 +178,7 @@ pqc-vault/
 ## Requirements
 
 - Docker and Docker Compose for the full stack
-- Node.js 20 or later for frontend development
+- Node.js 18 or later for frontend development
 - Python 3.11 or later for backend development
 - A modern browser with Web Crypto support
 - Internet access on first run for frontend dependency installation
