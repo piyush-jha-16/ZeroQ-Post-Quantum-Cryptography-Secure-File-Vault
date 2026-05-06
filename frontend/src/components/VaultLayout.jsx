@@ -85,7 +85,7 @@ export default function VaultLayout({ activeNav, title, subtitle, children }) {
                 key={item.id}
                 onClick={item.onClick}
                 title={item.label}
-                className={`w-full flex items-center rounded-lg transition-all ${
+                className={`w-full flex items-center rounded-lg transition-all duration-200 hover:bg-opacity-60 ${
                   collapsed ? 'justify-center px-2 py-3' : 'gap-3 px-4 py-3 text-sm'
                 }`}
                 style={isActive
@@ -98,7 +98,18 @@ export default function VaultLayout({ activeNav, title, subtitle, children }) {
                   : {
                       color: 'var(--text-1)',
                       border: '1px solid transparent',
+                      backgroundColor: 'transparent',
                     }}
+                onMouseEnter={(e) => {
+                  if (!isActive) {
+                    e.currentTarget.style.backgroundColor = 'rgba(21, 21, 21, 0.5)'
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  if (!isActive) {
+                    e.currentTarget.style.backgroundColor = 'transparent'
+                  }
+                }}
               >
                 <IconComponent className="h-5 w-5 shrink-0" />
                 {!collapsed && <span>{item.label}</span>}
@@ -116,7 +127,7 @@ export default function VaultLayout({ activeNav, title, subtitle, children }) {
                 key={item.id}
                 onClick={item.onClick}
                 title={item.label}
-                className={`w-full flex items-center rounded-lg transition-all ${
+                className={`w-full flex items-center rounded-lg transition-all duration-200 hover:bg-opacity-60 ${
                   collapsed ? 'justify-center px-2 py-3' : 'gap-3 px-4 py-3 text-sm'
                 }`}
                 style={isActive
@@ -129,7 +140,18 @@ export default function VaultLayout({ activeNav, title, subtitle, children }) {
                   : {
                       color: 'var(--text-1)',
                       border: '1px solid transparent',
+                      backgroundColor: 'transparent',
                     }}
+                onMouseEnter={(e) => {
+                  if (!isActive) {
+                    e.currentTarget.style.backgroundColor = 'rgba(21, 21, 21, 0.5)'
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  if (!isActive) {
+                    e.currentTarget.style.backgroundColor = 'transparent'
+                  }
+                }}
               >
                 <IconComponent className="h-5 w-5 shrink-0" />
                 {!collapsed && <span>{item.label}</span>}
@@ -139,7 +161,7 @@ export default function VaultLayout({ activeNav, title, subtitle, children }) {
           <button
             onClick={handleLogout}
             title="Logout"
-            className={`w-full flex items-center rounded-lg text-[#ef5350] hover:bg-[#101010] transition-all ${
+            className={`w-full flex items-center rounded-lg text-[#ef5350] hover:bg-red-500 hover:bg-opacity-10 transition-all duration-200 ${
               collapsed ? 'justify-center px-2 py-3' : 'gap-3 px-4 py-3 text-sm'
             }`}
           >
