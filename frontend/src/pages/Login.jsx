@@ -98,7 +98,7 @@ export default function Login() {
             <button
               type="submit"
               disabled={loading}
-              className="btn-primary mt-2 w-full"
+              className="btn-primary mt-2 w-full hover:opacity-90 active:scale-95 transition-all duration-150"
             >
               {loading ? (
                 <>
