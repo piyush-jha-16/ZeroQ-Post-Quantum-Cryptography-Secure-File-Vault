@@ -172,17 +172,17 @@ export default function VaultLayout({ activeNav, title, subtitle, children }) {
       </aside>
 
       <main className="flex-1 flex flex-col min-w-0">
-        <div className="border-b px-6 py-4 flex items-center justify-between" style={{ backgroundColor: 'var(--bg-1)', borderColor: 'var(--line)' }}>
-          <div>
-            <h2 className="text-[1.55rem] font-semibold tracking-tight" style={{ color: 'var(--text-0)' }}>{title}</h2>
-            {subtitle ? <p className="text-xs text-muted mt-1.5">{subtitle}</p> : null}
+        <div className="border-b px-6 py-5 flex items-center justify-between" style={{ backgroundColor: 'var(--bg-1)', borderColor: 'var(--line)' }}>
+          <div className="flex-1">
+            <h2 className="text-2xl font-bold tracking-tight leading-tight" style={{ color: 'var(--text-0)' }}>{title}</h2>
+            {subtitle ? <p className="text-sm text-muted mt-2">{subtitle}</p> : null}
           </div>
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-4 ml-6">
             <button
               onClick={toggleTheme}
               title={theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'}
               aria-label={theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'}
-              className="inline-flex h-10 w-10 items-center justify-center rounded-full border transition"
+              className="inline-flex h-10 w-10 items-center justify-center rounded-full border transition hover:bg-opacity-80 duration-200"
               style={{ borderColor: 'var(--line)', backgroundColor: 'var(--bg-2)', color: 'var(--text-1)' }}
             >
               {theme === 'dark' ? <SunIcon className="h-5 w-5" /> : <MoonIcon className="h-5 w-5" />}
@@ -194,7 +194,7 @@ export default function VaultLayout({ activeNav, title, subtitle, children }) {
             />
             <div
               title={username || 'User'}
-              className="flex items-center justify-center h-10 w-10 rounded-full border text-sm font-semibold"
+              className="flex items-center justify-center h-10 w-10 rounded-full border text-sm font-semibold transition hover:bg-opacity-80 duration-200"
               style={{ borderColor: 'var(--line)', backgroundColor: 'var(--bg-2)', color: 'var(--text-0)' }}
             >
               {userInitial}
