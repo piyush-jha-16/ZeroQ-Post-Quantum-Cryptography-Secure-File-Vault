@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import * as api from '../api'
-import { ArrowLeftIcon, DocumentationIcon, DocumentLockIcon, InboxIcon, KeyIcon, MoonIcon, ShieldLockIcon, SignOutIcon, SunIcon, UploadIcon } from '../icons'
+import { ArrowLeftIcon, DocumentLockIcon, InboxIcon, KeyIcon, MoonIcon, ShieldLockIcon, SignOutIcon, SunIcon, UploadIcon } from '../icons'
 
 const SIDEBAR_STATE_KEY = 'zeroq_sidebar_collapsed'
 const THEME_STATE_KEY = 'zeroq_theme'
@@ -44,7 +44,6 @@ export default function VaultLayout({ activeNav, title, subtitle, children }) {
     { id: 'inbox', label: 'Inbox', icon: InboxIcon, onClick: () => navigate('/inbox') },
     { id: 'send-file', label: 'Send File', icon: UploadIcon, onClick: () => navigate('/upload') },
     { id: 'history', label: 'History', icon: DocumentLockIcon, onClick: () => navigate('/dashboard?tab=history') },
-    { id: 'documentation', label: 'Documentation', icon: DocumentationIcon, onClick: () => navigate('/documentation') },
   ]
 
   const bottomNavItems = [
