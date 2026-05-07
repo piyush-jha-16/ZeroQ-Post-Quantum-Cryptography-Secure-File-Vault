@@ -62,14 +62,6 @@ function App() {
             </ProtectedRoute>
           }
         />
-        <Route
-          path="/documentation"
-          element={
-            <ProtectedRoute>
-              <Documentation />
-            </ProtectedRoute>
-          }
-        />
 
         {/* Catch-all */}
         <Route path="*" element={<Navigate to="/login" replace />} />
