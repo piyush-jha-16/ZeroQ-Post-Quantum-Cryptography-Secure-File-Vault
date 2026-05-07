@@ -44,7 +44,6 @@ export default function VaultLayout({ activeNav, title, subtitle, children }) {
     { id: 'inbox', label: 'Inbox', icon: InboxIcon, onClick: () => navigate('/inbox') },
     { id: 'send-file', label: 'Send File', icon: UploadIcon, onClick: () => navigate('/upload') },
     { id: 'history', label: 'History', icon: DocumentLockIcon, onClick: () => navigate('/dashboard?tab=history') },
-    { id: 'documentation', label: 'Documentation', icon: DocumentationIcon, onClick: () => navigate('/documentation') },
   ]
 
   const bottomNavItems = [
