@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import * as api from '../api'
-import { ArrowLeftIcon, DocumentationIcon, DocumentLockIcon, InboxIcon, KeyIcon, MoonIcon, ShieldLockIcon, SignOutIcon, SunIcon, UploadIcon } from '../icons'
+import { ArrowLeftIcon, DocumentLockIcon, InboxIcon, KeyIcon, MoonIcon, ShieldLockIcon, SignOutIcon, SunIcon, UploadIcon } from '../icons'
 
 const SIDEBAR_STATE_KEY = 'zeroq_sidebar_collapsed'
 const THEME_STATE_KEY = 'zeroq_theme'
