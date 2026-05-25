@@ -14,21 +14,16 @@ export default function Dashboard() {
   const [stats, setStats] = useState({ total_files_shared: 0, files_received: 0 })
   const [loadingStats, setLoadingStats] = useState(true)
   const [statsError, setStatsError] = useState('')
-
   useEffect(() => {
     const timer = setInterval(() => {
       setNow(new Date())
     }, 1000)
-
     return () => clearInterval(timer)
   }, [])
-
   useEffect(() => {
     let isMounted = true
-
     async function loadStats() {
-      try {
-        const vaultStats = await api.getVaultStats()
+      try {const vaultStats = await api.getVaultStats()
         if (isMounted) {
           setStats(vaultStats)
           setStatsError('')
